@@ -1,0 +1,97 @@
+mongo - for check a version
+show dbs - for checking detabase 
+
+> use test
+switched to db test
+
+> db
+test
+
+> db.dropDatabase()
+{ "ok" : 1 }
+
+
+
+> show collections
+
+> db.createCollection("users")
+{ "ok" : 1 }
+
+
+> db.user.insert({"batch":"web-15"})
+WriteResult({ "nInserted" : 1 })
+
+> db.user.find()
+{ "_id" : ObjectId("62279c01337fdf1523cf28f2"), "batch" : "web-15" }
+
+> db.user.insert({"class":"mongoDb Intro"})
+WriteResult({ "nInserted" : 1 })
+
+> db.user.find()
+{ "_id" : ObjectId("62279c01337fdf1523cf28f2"), "batch" : "web-15" }
+{ "_id" : ObjectId("62279d7c337fdf1523cf28f3"), "class" : "mongoDb Intro" }
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+test    0.000GB
+
+> db
+test
+
+> db.dropDatabase()
+{ "ok" : 1 }
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+> use web15
+switched to db web15
+
+> db
+web15
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+> db
+web15
+> db.createCollection("student")
+{ "ok" : 1 }
+
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+web15   0.000GB
+
+> db.student.insert({"name":"sachin"})
+WriteResult({ "nInserted" : 1 })
+
+
+> db.student.insert({"name":"anvi"})
+WriteResult({ "nInserted" : 1 })
+
+
+>  db.student.insertMany([{"name":"sachin"},{"name":"swati"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6227a120337fdf1523cf28f6"),
+                ObjectId("6227a120337fdf1523cf28f7")
+        ]
+}
+
+> db.student.find()
+{ "_id" : ObjectId("62279ff9337fdf1523cf28f4"), "name" : "sachin" }
+{ "_id" : ObjectId("6227a0a1337fdf1523cf28f5"), "name" : "anvi" }
+{ "_id" : ObjectId("6227a120337fdf1523cf28f6"), "name" : "sachin" }
+{ "_id" : ObjectId("6227a120337fdf1523cf28f7"), "name" : "swati" }
+
+
+
